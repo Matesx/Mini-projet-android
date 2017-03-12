@@ -25,8 +25,6 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     public void onClick(View v) {
                         //on lance l'activité qui gère la map
-
-                        //Toast.makeText(MainActivity.this,  "Bonjour ! :)", Toast.LENGTH_LONG).show();
                         Intent intent1 = new Intent(MainActivity.this, GoogleMap.class);
                         startActivity(intent1);
 

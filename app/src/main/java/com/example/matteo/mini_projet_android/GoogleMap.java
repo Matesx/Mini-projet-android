@@ -30,10 +30,9 @@ public class GoogleMap extends FragmentActivity implements OnMapReadyCallback  {
 
 
     public GoogleMap googleMap = null;
-    LatLng cameraBase;
-    Double LatLng1, LatLng2;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference();
+
 
 
     @Override
@@ -56,14 +55,13 @@ public class GoogleMap extends FragmentActivity implements OnMapReadyCallback  {
 
     private void initialiseMap() {
 
-        myRef.child("cameraBase").child("Latlng1").setValue(43.55695559999999);
-        myRef.child("cameraBase").child("Latlng2").setValue(1.466449799999964);
-        myRef.child("markers").child("RU 1").child("Latlng1").setValue(43.561985);
-        myRef.child("markers").child("RU 1").child("Latlng2").setValue(1.463430);
-        myRef.child("markers").child("U4").child("Latlng1").setValue(43.561985);
-        myRef.child("markers").child("U4").child("Latlng2").setValue(1.469198);
-        myRef.child("markers").child("IRIT").child("Latlng1").setValue(43.561985);
-        myRef.child("markers").child("IRIT").child("Latlng2").setValue(1.467881);
+        Point ru1 = new Point("RU 1", 43.561985,  1.463430);
+        Point u4 = new Point("U4", 43.562578,  1.469191);
+        Point irit = new Point("IRIT", 43.561647,  1.467901);
+
+        myRef.child("markers").child(ru1.name).setValue(ru1);
+        myRef.child("markers").child(u4.name).setValue(u4);
+        myRef.child("markers").child(irit.name).setValue(irit);
 
         if(googleMap == null){
             MapFragment mapFragment = (MapFragment) getFragmentManager()
@@ -84,47 +82,30 @@ public class GoogleMap extends FragmentActivity implements OnMapReadyCallback  {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
+
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    if(child.getKey().equals("cameraBase")){
-                        for (DataSnapshot childd : child.getChildren()) {
-                            //Log.d("ATTENTION",childd.getKey() );
-                            if(childd.getKey().equals("Latlng1")){
-                                LatLng1 = (Double)childd.getValue();
-
-
-                            }
-                            if(childd.getKey().equals("Latlng2")){
-                                LatLng2 = (Double)childd.getValue();
-                            }
-                        }
-
-                    }
+                
 
                     if(child.getKey().equals("markers")){
+
+                        Point point = null;
+
                         for (DataSnapshot childd : child.getChildren()) {
-                            String titre = childd.getKey();
-                            Double LatLng11 = 0.0;
-                            Double LatLng22 = 0.0;
-                            for (DataSnapshot childdd : childd.getChildren()) {
-                                if(childdd.getKey().equals("Latlng1")){
-                                    LatLng11 = (Double)childdd.getValue();
+
+                            point = childd.getValue(Point.class);
 
 
-                                }
-                                if(childdd.getKey().equals("Latlng2")){
-                                    LatLng22 = (Double)childdd.getValue();
-                                }
-                            }
+                            googleMap.addMarker(new MarkerOptions().position(new LatLng(point.LatLng1, point.LatLng2)).title(point.name));
 
-                            googleMap.addMarker(new MarkerOptions().position(new LatLng(LatLng11, LatLng22)).title(titre));
+
                         }
+
                     }
 
 
                 }
 
-                cameraBase = new LatLng(43.55695559999999,  1.466449799999964);
-                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(cameraBase, 15));
 
             }
 
