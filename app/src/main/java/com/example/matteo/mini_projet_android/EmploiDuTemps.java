@@ -12,11 +12,7 @@ import android.webkit.WebViewClient;
 
 public class EmploiDuTemps extends Activity {
 
-    private static final String LOG_TAG = "Log : ";
-    private final String mimeType = "text/html";
-    private final String encoding = "utf-8";
     private String url = "https://edt.univ-tlse3.fr/FSI/FSImentionM/Info/g31090.html";
-    private String pageWeb;
     private WebView webView;
 
 
@@ -36,7 +32,6 @@ public class EmploiDuTemps extends Activity {
     }
 
     public void traitement(){
-        // set web view client
         webView.setWebViewClient(new MyWebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(url);
@@ -45,7 +40,7 @@ public class EmploiDuTemps extends Activity {
     private class MyWebViewClient extends WebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            view.loadUrl(url); // load the url
+            view.loadUrl(url);
             return true;
         }
     }
