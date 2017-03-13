@@ -1,4 +1,4 @@
-package com.example.matteo.mini_projet_android;
+package com.example.matteo.mini_projet_android.Model;
 
 /**
  * Created by Matteo on 12/03/2017.

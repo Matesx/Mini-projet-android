@@ -39,6 +39,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".GoogleMap" />
+        <activity android:name=".EmploiDuTemps" />
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyB_q8d5WYUs4kHIfV_SIAVFx8m0riAgv20"/>
     </application>
 

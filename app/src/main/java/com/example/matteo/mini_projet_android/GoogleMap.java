@@ -1,12 +1,10 @@
 package com.example.matteo.mini_projet_android;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
+import com.example.matteo.mini_projet_android.Model.Point;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
@@ -16,10 +14,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import java.util.Map;
 
 /**
  * Created by Matteo on 12/03/2017.
@@ -27,20 +21,13 @@ import java.util.Map;
 
 public class GoogleMap extends FragmentActivity implements OnMapReadyCallback  {
 
-
-
     public GoogleMap googleMap = null;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference();
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
 
         setContentView(R.layout.google_map);
 
@@ -53,8 +40,10 @@ public class GoogleMap extends FragmentActivity implements OnMapReadyCallback  {
 
     }
 
+
     private void initialiseMap() {
 
+        /* batiment paul sabatier */
         Point ru1 = new Point("RU 1", 43.561985,  1.463430);
         Point u4 = new Point("U4", 43.562578,  1.469191);
         Point irit = new Point("IRIT", 43.561647,  1.467901);
@@ -69,23 +58,17 @@ public class GoogleMap extends FragmentActivity implements OnMapReadyCallback  {
             mapFragment.getMapAsync(this);
         }
 
-
-
     }
 
 
     @Override
     public void onMapReady(final com.google.android.gms.maps.GoogleMap googleMap) {
 
-
-
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
-                
 
                     if(child.getKey().equals("markers")){
 
@@ -94,19 +77,11 @@ public class GoogleMap extends FragmentActivity implements OnMapReadyCallback  {
                         for (DataSnapshot childd : child.getChildren()) {
 
                             point = childd.getValue(Point.class);
-
-
                             googleMap.addMarker(new MarkerOptions().position(new LatLng(point.LatLng1, point.LatLng2)).title(point.name));
 
-
                         }
-
                     }
-
-
                 }
-
-
             }
 
             @Override
@@ -115,9 +90,6 @@ public class GoogleMap extends FragmentActivity implements OnMapReadyCallback  {
                 Log.w("ALIRE", "Failed to read value.", error.toException());
             }
         });
-
-
-
 
     }
 }

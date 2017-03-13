@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView monTexte = null;
     private Button button1;
+    private Button button2;
 
 
     @Override
@@ -19,15 +20,30 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         monTexte = (TextView)findViewById(R.id.textView1);
         button1 = (Button) findViewById(R.id.button1);
+        button2 = (Button) findViewById(R.id.button2);
 
         button1.setOnClickListener(
+                new View.OnClickListener() {
+                    public void onClick(View v) {
+                        //création d'un nouveau Thread pour libérer l'UI Thread le plus tôt possible ;)
+                        new Thread(){
+                            public void run(){
+                                //on lance l'activité qui gère la map
+                                Intent intent1 = new Intent(MainActivity.this, GoogleMap.class);
+                                startActivity(intent1);
+                            }
+                        }.start();
 
+                    }
+                }
+        );
+
+        button2.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View v) {
                         //on lance l'activité qui gère la map
-                        Intent intent1 = new Intent(MainActivity.this, GoogleMap.class);
-                        startActivity(intent1);
-
+                        Intent intent2 = new Intent(MainActivity.this, EmploiDuTemps.class);
+                        startActivity(intent2);
                     }
                 }
         );
@@ -35,3 +51,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 }
+
