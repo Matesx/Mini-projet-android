@@ -45,6 +45,15 @@
             tools:layout_editor_absoluteY="65dp"
             android:text="@string/button2"/>
 
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="142dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.06"
+            tools:layout_editor_absoluteX="28dp"
+            tools:layout_editor_absoluteY="65dp"
+            android:text="@string/button3"/>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

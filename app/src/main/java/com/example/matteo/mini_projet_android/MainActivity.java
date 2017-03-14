@@ -10,8 +10,8 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     TextView monTexte = null;
-    private Button button1;
-    private Button button2;
+    private Button button1, button2, button3;
+
 
 
     @Override
@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         monTexte = (TextView)findViewById(R.id.textView1);
         button1 = (Button) findViewById(R.id.button1);
         button2 = (Button) findViewById(R.id.button2);
+        button3 = (Button) findViewById(R.id.button3);
 
         button1.setOnClickListener(
                 new View.OnClickListener() {
@@ -41,9 +42,32 @@ public class MainActivity extends AppCompatActivity {
         button2.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View v) {
-                        //on lance l'activité qui gère la map
-                        Intent intent2 = new Intent(MainActivity.this, EmploiDuTemps.class);
-                        startActivity(intent2);
+                        //création d'un nouveau Thread pour libérer l'UI Thread le plus tôt possible ;)
+                        new Thread(){
+                            public void run(){
+                                //on lance l'activité qui gère la map
+                                Intent intent2 = new Intent(MainActivity.this, EmploiDuTemps.class);
+                                startActivity(intent2);
+                            }
+                        }.start();
+
+                    }
+                }
+        );
+
+
+        button3.setOnClickListener(
+                new View.OnClickListener() {
+                    public void onClick(View v) {
+                        //création d'un nouveau Thread pour libérer l'UI Thread le plus tôt possible ;)
+                        new Thread(){
+                            public void run(){
+                                //on lance l'activité qui gère la map
+                                Intent intent3 = new Intent(MainActivity.this, QrCode.class);
+                                startActivity(intent3);
+                            }
+                        }.start();
+
                     }
                 }
         );

@@ -18,6 +18,8 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <!-- Required OpenGL ES 2.0. for Maps V2 -->
     <uses-feature
         android:glEsVersion="0x00020000"
@@ -40,6 +42,8 @@
         </activity>
         <activity android:name=".GoogleMap" />
         <activity android:name=".EmploiDuTemps" />
+        <activity android:name=".QrCode" />
+
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyB_q8d5WYUs4kHIfV_SIAVFx8m0riAgv20"/>
     </application>
 

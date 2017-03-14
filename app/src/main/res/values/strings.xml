@@ -3,4 +3,5 @@
     <string name="textView1">Bienvenue ! :)</string>
     <string name="button1">Google Map</string>
     <string name="button2">Emploi du temps</string>
+    <string name="button3">QR code</string>
 </resources>
