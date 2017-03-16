@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import com.example.matteo.mini_projet_android.GoogleMap;
 import com.example.matteo.mini_projet_android.MainActivity;
 import com.example.matteo.mini_projet_android.PageInternet;
+import com.example.matteo.mini_projet_android.Photo;
 import com.example.matteo.mini_projet_android.QrCode;
 import com.example.matteo.mini_projet_android.R;
 
@@ -91,7 +92,8 @@ public class MenuActivity extends AppCompatActivity
 
                 break;
             case R.id.nav_anomalies:
-
+                Intent intent4 = new Intent(MenuActivity.this, Photo.class);
+                startActivity(intent4);
                 break;
             case R.id.nav_edt:
                 Intent intent2 = new Intent(MenuActivity.this, PageInternet.class);
