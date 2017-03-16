@@ -97,9 +97,6 @@ public class GoogleMap extends FragmentActivity implements OnMapReadyCallback  {
             }
 
 
-
-
-
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value

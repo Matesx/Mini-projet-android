@@ -2,34 +2,47 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+        <item android:title="Ma Fac">
+            <menu>
+                <item
+                    android:id="@+id/nav_geo"
+                    android:icon="@drawable/ic_menu_camera"
+                    android:title="Localisation Bâtiments" />
+                <item
+                    android:id="@+id/nav_resto"
+                    android:icon="@drawable/ic_menu_gallery"
+                    android:title="Restaurants Universitaires" />
+                <item
+                    android:id="@+id/nav_anomalies"
+                    android:icon="@drawable/ic_menu_slideshow"
+                    android:title="Anomalies" />
+            </menu>
+        </item>
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Mes cours">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_edt"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:title="Emploi du temps" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_infos_cours"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="Informations (Scan)" />
+        </menu>
+    </item>
+
+    <item android:title="Configuration">
+        <menu>
+            <item
+                android:id="@+id/nav_config"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Configuration" />
+            <item
+                android:id="@+id/nav_infos_config"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Informations" />
         </menu>
     </item>
 
