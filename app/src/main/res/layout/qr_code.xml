@@ -8,7 +8,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Scan" />
+        android:text="Cliquer pour scanner :)" />
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textIsSelectable="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/scan_button"
+        android:text="Si le scan est un qr code ça vous lancera le site internet :)"
+         />
 
     <TextView
         android:id="@+id/scan_format"
@@ -16,7 +26,7 @@
         android:layout_height="wrap_content"
         android:textIsSelectable="true"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/scan_button" />
+        android:layout_below="@+id/info" />
     <TextView
         android:id="@+id/scan_content"
         android:layout_width="wrap_content"

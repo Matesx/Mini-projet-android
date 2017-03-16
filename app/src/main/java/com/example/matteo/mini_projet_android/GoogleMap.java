@@ -68,15 +68,15 @@ public class GoogleMap extends FragmentActivity implements OnMapReadyCallback  {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                for (DataSnapshot enfant : dataSnapshot.getChildren()) {
 
-                    if(child.getKey().equals("markers")){
+                    if(enfant.getKey().equals("markers")){
 
                         Point point = null;
 
-                        for (DataSnapshot childd : child.getChildren()) {
+                        for (DataSnapshot enfant2 : enfant.getChildren()) {
 
-                            point = childd.getValue(Point.class);
+                            point = enfant2.getValue(Point.class);
                             googleMap.addMarker(new MarkerOptions().position(new LatLng(point.LatLng1, point.LatLng2)).title(point.name));
 
                         }

@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView monTexte = null;
     private Button button1, button2, button3;
+    final String url_emploi_temmps = "https://edt.univ-tlse3.fr/FSI/FSImentionM/Info/g31090.html";
 
 
 
@@ -46,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
                         new Thread(){
                             public void run(){
                                 //on lance l'activité qui gère la map
-                                Intent intent2 = new Intent(MainActivity.this, EmploiDuTemps.class);
+                                Intent intent2 = new Intent(MainActivity.this, PageInternet.class);
+                                intent2.putExtra("url", url_emploi_temmps);
                                 startActivity(intent2);
                             }
                         }.start();

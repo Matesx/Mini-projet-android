@@ -13,6 +13,7 @@
         map:cameraTargetLat="43.55695559999999"
         map:cameraTargetLng="1.466449799999964"
         map:cameraZoom="15"
+        map:uiMapToolbar="false"
          />
 
 
