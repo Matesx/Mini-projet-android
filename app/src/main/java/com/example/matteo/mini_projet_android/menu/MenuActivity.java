@@ -2,9 +2,6 @@ package com.example.matteo.mini_projet_android.menu;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,9 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.matteo.mini_projet_android.GoogleMap;
-import com.example.matteo.mini_projet_android.MainActivity;
 import com.example.matteo.mini_projet_android.PageInternet;
-import com.example.matteo.mini_projet_android.Photo;
+import com.example.matteo.mini_projet_android.PhotoActivity;
 import com.example.matteo.mini_projet_android.QrCode;
 import com.example.matteo.mini_projet_android.R;
 
@@ -92,7 +88,7 @@ public class MenuActivity extends AppCompatActivity
 
                 break;
             case R.id.nav_anomalies:
-                Intent intent4 = new Intent(MenuActivity.this, Photo.class);
+                Intent intent4 = new Intent(MenuActivity.this, PhotoActivity.class);
                 startActivity(intent4);
                 break;
             case R.id.nav_edt:

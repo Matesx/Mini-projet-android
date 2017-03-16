@@ -6,18 +6,20 @@ package com.example.matteo.mini_projet_android.Model;
 
 public class Photo {
 
-    public Double orientation;
-    public String criticite;
+    public Float orientation;
+    public String criticite, imageUrl;
     public Point coordonne;
+
 
 
     public Photo() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public Photo(Double orientation, String criticite, Point coordonne ) {
+    public Photo(Float orientation, String criticite, Point coordonne, String imageUrl ) {
         this.orientation = orientation;
         this.criticite = criticite;
         this.coordonne = coordonne;
+        this.imageUrl = imageUrl;
     }
 }

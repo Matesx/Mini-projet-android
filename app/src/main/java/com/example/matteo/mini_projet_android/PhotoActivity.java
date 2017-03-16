@@ -6,40 +6,64 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
+import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v4.app.ActivityCompat;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.InputStream;
+import com.example.matteo.mini_projet_android.Model.Photo;
+import com.example.matteo.mini_projet_android.Model.Point;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+
+import static com.example.matteo.mini_projet_android.R.id.imageView;
+import static com.example.matteo.mini_projet_android.R.id.textView;
 
 /**
  * Created by Matteo on 16/03/2017.
  */
 
-public class Photo extends AppCompatActivity implements SensorEventListener {
+public class PhotoActivity extends AppCompatActivity implements SensorEventListener {
     Button ButtonEnvoyer;
     TextView TextViewValid;
     Spinner SpinnerCriticite;
+    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    final DatabaseReference myRef = database.getReference();
+    private StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
+    private File output=null;
+
+    ImageView imageView;
 
 
     SensorManager sensorManager;
@@ -51,8 +75,8 @@ public class Photo extends AppCompatActivity implements SensorEventListener {
     float[] magneticVector=new float[3];
     float[] resultMatrix=new float[9];
     float[] values=new float[3];
-    double latitude = 0;
-    double longitude = 0;
+    Double latitude = 0.0;
+    Double longitude = 0.0;
     static float orientation;
     static String criticite;
 
@@ -60,6 +84,7 @@ public class Photo extends AppCompatActivity implements SensorEventListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo);
+        imageView = (ImageView) findViewById(R.id.imageView2) ;
 
         ButtonEnvoyer = (Button) findViewById(R.id.buttonEnvoyer);
         TextViewValid = (TextView) findViewById(R.id.txtInfoSend);
@@ -81,8 +106,11 @@ public class Photo extends AppCompatActivity implements SensorEventListener {
         ButtonEnvoyer.setOnClickListener(
                 new View.OnClickListener(){
                     public void onClick(View v) {
-                        Intent mediaChooser = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                        startActivityForResult(mediaChooser, 1);
+
+                        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        //cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(output));
+
+                        startActivityForResult(cameraIntent, 1);
                         criticite = SpinnerCriticite.getSelectedItem().toString();
                     }
                 }
@@ -131,18 +159,57 @@ public class Photo extends AppCompatActivity implements SensorEventListener {
             }
 
             Bitmap image = (Bitmap) data.getExtras().get("data");
+            // CALL THIS METHOD TO GET THE URI FROM THE BITMAP
+            Uri tempUri = getImageUri(getApplicationContext(), image);
+
+            Point photoPoint = new Point("Photo1", latitude,  longitude);
+
+
+            // store image in firebase
+            ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
+            image.compress(Bitmap.CompressFormat.PNG, 100, bYtE);
+            image.recycle();
+            byte[] byteArray = bYtE.toByteArray();
+            String encodedImage = Base64.encodeToString(byteArray, Base64.DEFAULT);
+
+            Photo photo1 = new Photo(orientation, criticite, photoPoint, encodedImage);
+            myRef.child("photos").child(photoPoint.name).setValue(photo1);
+
+
+
+            TextViewValid.setText("Votre photo : ");
+            
+
+            byte[] decodedString = Base64.decode(encodedImage, Base64.DEFAULT);
+            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            imageView.setImageBitmap(decodedByte);
 
             String infos = "Infos enregistrées \n";
             infos += "criticite : "+criticite+"\n";
             infos += "position : "+longitude+" , "+latitude +"\n";
             infos += "orientation : "+orientation+"\n";
-            infos += "image : "+image;
+
             Toast.makeText(this, infos, Toast.LENGTH_LONG).show();
+
+
         }
         else{
             Toast.makeText(this, "Aucune photo n'a été prise", Toast.LENGTH_SHORT).show();
         }
     }
+
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
+    }
+
+
+
+
+
+
 
 
     @Override
