@@ -3,7 +3,6 @@ package com.example.matteo.mini_projet_android;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 
@@ -22,7 +21,7 @@ public class PageInternet extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        setContentView(R.layout.emploi_du_temps);
+        setContentView(R.layout.page_internet);
         Bundle extras = getIntent().getExtras();
         url = extras.getString("url");
         webView = (android.webkit.WebView) findViewById(R.id.WebView1);

@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView monTexte = null;
     private Button button1, button2, button3;
-    final String url_emploi_temmps = "https://edt.univ-tlse3.fr/FSI/FSImentionM/Info/g31090.html";
+    final String url_emploi_temps = "https://edt.univ-tlse3.fr/FSI/FSImentionM/Info/g31090.html";
 
 
 
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                             public void run(){
                                 //on lance l'activité qui gère la map
                                 Intent intent2 = new Intent(MainActivity.this, PageInternet.class);
-                                intent2.putExtra("url", url_emploi_temmps);
+                                intent2.putExtra("url", url_emploi_temps);
                                 startActivity(intent2);
                             }
                         }.start();

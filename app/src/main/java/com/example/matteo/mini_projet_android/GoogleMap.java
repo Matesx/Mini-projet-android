@@ -3,6 +3,11 @@ package com.example.matteo.mini_projet_android;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.matteo.mini_projet_android.Model.Point;
 import com.google.android.gms.maps.MapFragment;
@@ -15,6 +20,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Matteo on 12/03/2017.
  */
@@ -25,10 +33,11 @@ public class GoogleMap extends FragmentActivity implements OnMapReadyCallback  {
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference();
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.google_map);
 
         try {
@@ -37,6 +46,7 @@ public class GoogleMap extends FragmentActivity implements OnMapReadyCallback  {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
 
     }
 
@@ -68,6 +78,7 @@ public class GoogleMap extends FragmentActivity implements OnMapReadyCallback  {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
+
                 for (DataSnapshot enfant : dataSnapshot.getChildren()) {
 
                     if(enfant.getKey().equals("markers")){
@@ -82,7 +93,12 @@ public class GoogleMap extends FragmentActivity implements OnMapReadyCallback  {
                         }
                     }
                 }
+
             }
+
+
+
+
 
             @Override
             public void onCancelled(DatabaseError error) {
@@ -92,4 +108,8 @@ public class GoogleMap extends FragmentActivity implements OnMapReadyCallback  {
         });
 
     }
+
+
+
+
 }
