@@ -51,6 +51,16 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyB_q8d5WYUs4kHIfV_SIAVFx8m0riAgv20" />
 
+        <activity
+            android:name=".menu.MenuActivity"
+            android:label="@string/title_activity_menu"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
