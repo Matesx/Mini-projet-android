@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.matteo.mini_projet_android.GoogleMap;
+import com.example.matteo.mini_projet_android.InformationActivity;
 import com.example.matteo.mini_projet_android.PageInternet;
 import com.example.matteo.mini_projet_android.PhotoActivity;
 import com.example.matteo.mini_projet_android.QrCode;
@@ -104,7 +105,8 @@ public class MenuActivity extends AppCompatActivity
 
                 break;
             case R.id.nav_infos_config:
-
+                Intent intent5 = new Intent(MenuActivity.this, InformationActivity.class);
+                startActivity(intent5);
                 break;
         }
 

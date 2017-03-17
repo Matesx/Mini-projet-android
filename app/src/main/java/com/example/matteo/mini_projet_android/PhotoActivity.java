@@ -34,21 +34,15 @@ import android.widget.Toast;
 
 import com.example.matteo.mini_projet_android.Model.Photo;
 import com.example.matteo.mini_projet_android.Model.Point;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
+
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.IOException;
 
-import static com.example.matteo.mini_projet_android.R.id.imageView;
-import static com.example.matteo.mini_projet_android.R.id.textView;
 
 /**
  * Created by Matteo on 16/03/2017.
@@ -178,7 +172,7 @@ public class PhotoActivity extends AppCompatActivity implements SensorEventListe
 
 
             TextViewValid.setText("Votre photo : ");
-            
+
 
             byte[] decodedString = Base64.decode(encodedImage, Base64.DEFAULT);
             Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
@@ -204,12 +198,6 @@ public class PhotoActivity extends AppCompatActivity implements SensorEventListe
         String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
         return Uri.parse(path);
     }
-
-
-
-
-
-
 
 
     @Override
