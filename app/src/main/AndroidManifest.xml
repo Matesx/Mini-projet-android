@@ -44,7 +44,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PhotoActivity"></activity>
+        <activity android:name=".PhotoActivity" />
         <activity android:name=".GoogleMap" />
         <activity
             android:name=".PageInternet"
@@ -68,7 +68,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".InformationActivity"></activity>
+        <activity android:name=".InformationActivity" />
+        <activity android:name=".Configuration"></activity>
     </application>
 
 </manifest>

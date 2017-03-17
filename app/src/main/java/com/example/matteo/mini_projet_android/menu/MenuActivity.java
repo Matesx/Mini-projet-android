@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.matteo.mini_projet_android.Configuration;
 import com.example.matteo.mini_projet_android.GoogleMap;
 import com.example.matteo.mini_projet_android.InformationActivity;
 import com.example.matteo.mini_projet_android.PageInternet;
@@ -102,7 +103,8 @@ public class MenuActivity extends AppCompatActivity
                 startActivity(intent3);
                 break;
             case R.id.nav_config:
-
+                Intent intent6 = new Intent(MenuActivity.this, Configuration.class);
+                startActivity(intent6);
                 break;
             case R.id.nav_infos_config:
                 Intent intent5 = new Intent(MenuActivity.this, InformationActivity.class);
