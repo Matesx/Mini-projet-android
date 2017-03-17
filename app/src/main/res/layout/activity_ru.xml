@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.matteo.mini_projet_android.RUActivity">
+
+    <LinearLayout
+        android:layout_width="584dp"
+        android:layout_height="807dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <Button
+            android:id="@+id/button11h30"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="+10 Personne 11H30" />
+
+        <Button
+            android:id="@+id/button11h45"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="+10 Personnes 11H45" />
+
+        <Button
+            android:id="@+id/button12H00"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="+10 Personnes 12H00" />
+
+        <Button
+            android:id="@+id/button12H15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="+10 Personnes 12H15" />
+
+        <Button
+            android:id="@+id/button12H30"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="+10 Personnes 12H30" />
+
+        <Button
+            android:id="@+id/button12H45"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="+10 Personnes 12H45" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/linegraph"
+            android:layout_width="584dp"
+            android:layout_height="460dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <Button
+            android:id="@+id/buttonReinitialiser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Réinitialiser données" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

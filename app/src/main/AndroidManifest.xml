@@ -68,8 +68,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".InformationActivity" />
-        <activity android:name=".Configuration"></activity>
+        <activity android:name=".InformationActivity"
+            android:screenOrientation="locked"/>
+        <activity android:name=".Configuration" />
+        <activity android:name=".RUActivity"
+            android:screenOrientation="locked" />
     </application>
 
 </manifest>

@@ -49,8 +49,21 @@ dependencies {
 }
 
 
+repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}
+dependencies {
+    compile 'com.github.PhilJay:MPAndroidChart:v2.1.6'
+}
 
 
 
 
+
+
+dependencies {
+    compile 'com.android.support.constraint:constraint-layout:+'
+}
 apply plugin: 'com.google.gms.google-services'

@@ -18,6 +18,7 @@ import com.example.matteo.mini_projet_android.PageInternet;
 import com.example.matteo.mini_projet_android.PhotoActivity;
 import com.example.matteo.mini_projet_android.QrCode;
 import com.example.matteo.mini_projet_android.R;
+import com.example.matteo.mini_projet_android.RUActivity;
 
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -87,7 +88,8 @@ public class MenuActivity extends AppCompatActivity
                 break;
 
             case R.id.nav_resto:
-
+                Intent intent7 = new Intent(MenuActivity.this, RUActivity.class);
+                startActivity(intent7);
                 break;
             case R.id.nav_anomalies:
                 Intent intent4 = new Intent(MenuActivity.this, PhotoActivity.class);

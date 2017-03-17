@@ -19,7 +19,6 @@ public class Configuration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuration);
         login = (TextView) findViewById(R.id.textViewLogin);
-        mdp = (TextView) findViewById(R.id.textViewMdp);
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
